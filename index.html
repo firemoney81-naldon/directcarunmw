@@ -1,23 +1,396 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+  <!-- Schema.org Product/Service 마크업(JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "자동차보험 비교 및 가입 안내",
+    "name": "2026년 11월 자동차보험 혜택 비교 서비스",
+    "description": "다양한 보험사의 2026년 11월 자동차보험 할인 혜택, 특약, 보험료를 비교하여 최저가 견적을 제공하고 가입을 돕습니다.",
+    "url": "https://도메인/11월_자동차보험_비교",
+    "provider": {
+      "@type": "Organization",
+      "name": "자동차보험 비교 센터",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "telephone": "+82-10-1234-5678"
+      }
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "자동차보험 상품 목록",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "마일리지 특약 할인"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "블랙박스 할인 특약"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "안전운전 습관 할인"
+          }
+        }
+      ]
+    }
+  }
+  </script>
+
+  <style>
+    /* Noto Sans KR 폰트 */
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+    /* 기본 레이아웃 및 디자인 (부드럽고 다채로운 색상 + 계층 잘 보이도록 개선) */
+    body { font-family: 'Noto Sans KR', sans-serif; margin:0; padding:0; background:#f0f4f8; color:#333; line-height:1.7; font-size:16px; }
+    header { background:#ffffff; border-radius:12px 12px 0 0; box-shadow:0 4px 12px rgba(0,0,0,0.05); text-align:center; padding:30px 20px; max-width:900px; margin:20px auto 0; }
+    section { max-width:900px; margin:0 auto 20px; padding:20px; background:#ffffff; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.05); }
+    nav { max-width:900px; margin:0 auto; padding:10px 20px; background:#e0efff; border-radius:0 0 12px 12px; box-shadow:0 4px 12px rgba(0,0,0,0.05); text-align:center; }
+    footer { max-width:900px; margin:20px auto; padding:20px; background:#ffffff; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.05); text-align:center; color:#666; font-size:0.9rem; }
+
+    h1 { font-size:2.8rem; color:#0b3d91; margin-bottom:12px; font-weight:800; }
+    h2 { font-size:2rem; color:#0b3d91; border-bottom:3px solid #a3c4ff; padding-bottom:10px; margin-top:30px; }
+    h3 { font-size:1.5rem; color:#3367d6; margin-top:20px; border-left:4px solid #4285f4; padding-left:10px; }
+    p, li, td, th { font-size:1rem; line-height:1.8; }
+
+    /* 네비게이션 스타일 */
+    nav ul { list-style:none; padding:0; margin:0; display:flex; justify-content:center; flex-wrap:wrap; }
+    nav li { margin:5px 10px; }
+    nav a { display:block; padding:8px 15px; background:#ffffff; border-radius:20px; font-weight:600; color:#0b3d91; text-decoration:none; transition:background-color 0.3s ease; }
+    nav a:hover { background:#a3c4ff; color:#fff; }
+
+    /* 테이블 스타일 */
+    table { width:100%; border-collapse: collapse; margin:20px 0; border:1px solid #ccddee; border-radius:8px; overflow:hidden; }
+    th, td { border:1px solid #e0efff; padding:15px; text-align:left; font-size:0.95rem; }
+    th { background:#4285f4; color:#fff; font-weight:700; }
+    td:nth-child(even) { background:#f9fbff; }
+
+    /* 강조 박스 스타일 */
+    .highlight-box { background:#e0efff; border:2px solid #a3c4ff; border-radius:8px; padding:20px; margin:20px 0; }
+    .highlight-box strong { color:#0b3d91; }
+
+    /* CTA 버튼 스타일 */
+    .btn-cta {
+      display:inline-block;
+      padding:16px 30px;
+      background:#4285f4;
+      color:#fff;
+      font-weight:700;
+      border:none;
+      border-radius:30px;
+      box-shadow:0 6px 10px rgba(66, 133, 244, 0.3);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      cursor:pointer;
+      text-decoration:none;
+      text-align:center;
+      font-size:1.1rem;
+      margin-top:20px;
+    }
+    .btn-cta:hover {
+      background:#3367d6;
+      transform:translateY(-2px);
+    }
+
+    /* 폼 스타일 */
+    form { background:#f9fbff; border:1px solid #ccddee; padding:25px; border-radius:8px; max-width:600px; margin:20px auto; }
+    label { display:block; margin-top:15px; font-weight:600; color:#333; }
+    input[type="text"], input[type="tel"], input[type="email"], select, textarea { width:100%; padding:12px; margin-top:5px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box; font-size:1rem; }
+    textarea { resize:vertical; }
+
+    /* 반응형 디자인 */
+    @media(max-width:768px) {
+      body { padding:10px; font-size:15px; }
+      header, section, footer { margin:10px auto; padding:15px; border-radius:8px; }
+      h1 { font-size:2rem; }
+      h2 { font-size:1.7rem; }
+      h3 { font-size:1.3rem; }
+      nav ul { flex-direction: column; }
+      nav li { margin:5px 0; }
+      .btn-cta { width:100%; padding:15px 0; font-size:1rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>2026년 11월 자동차보험 혜택 비교 가이드</h1>
+    <p>복잡한 자동차보험, 11월 갱신 시기를 맞아 핵심 할인 혜택과 견적 절약 팁을 한눈에 비교해보세요.</p>
+    <a class="btn-cta" href="#quote-form">실시간 보험료 견적 비교하기</a>
+  </header>
+
+  <nav aria-label="페이지 내 이동">
+    <ul>
+      <li><a href="#intro">왜 11월에 비교해야 하는가?</a></li>
+      <li><a href="#discount-types">핵심 할인 특약 및 혜택</a></li>
+      <li><a href="#comparison-table">주요 보험사별 혜택 비교</a></li>
+      <li><a href="#cost-factors">보험료 견적 영향 요인</a></li>
+      <li><a href="#tips">가입 시 체크리스트 및 팁</a></li>
+      <li><a href="#faq">자주 묻는 질문 (FAQ)</a></li>
+    </ul>
+  </nav>
+
+  <section id="intro">
+    <span id="intro-anchor" class="anchor"></span>
+    <h2>11월, 자동차보험 갱신 시기의 중요성</h2>
+    <p>자동차보험 갱신 시기는 대다수의 운전자에게 1년 중 가장 중요한 재테크 시기 중 하나입니다. 특히 11월은 연말을 앞두고 다양한 보험사들이 새로운 프로모션과 할인 혜택을 집중적으로 선보이는 시기이므로, 철저한 비교를 통해 보험료를 절약할 수 있는 최적의 기회입니다. 자동차보험료는 매년 변동되며, 갱신 시기에 어떤 혜택을 적용하느냐에 따라 <strong>연간 수십만 원의 비용 차이</strong>가 발생할 수 있습니다.</p>
+    <p><strong>2026년 11월</strong>을 기준으로, 보험사들은 경기 침체와 물가 상승에 따른 운전자들의 부담을 덜어주기 위해 다양한 특별 할인 이벤트를 준비하고 있습니다. 보험사별로 제공하는 할인 혜택, 특약, 그리고 보험료 <strong>가격</strong> 정책이 다르기 때문에 단순히 기존 보험을 갱신하기보다는 여러 업체의 <strong>견적</strong>을 꼼꼼히 <strong>비교</strong>해보는 것이 현명한 <strong>가입</strong> 방법입니다. 이 가이드에서는 2026년 11월 현재 가장 핫한 할인 특약과 <strong>저렴한곳</strong>을 찾는 노하우를 상세히 다룹니다.</p>
+    <p><strong>핵심 키워드 분석:</strong> 자동차보험 혜택, 11월, 비교, 비용, 가격, 견적, 가입, 할인, 특약.</p>
+  </section>
+
+  <section id="discount-types">
+    <span id="discount-types-anchor" class="anchor"></span>
+    <h2>필수 확인! 자동차보험 핵심 할인 특약 및 혜택 분석</h2>
+    <p>자동차보험료를 <strong>저렴한곳</strong>에서 <strong>가입</strong>하기 위해서는 기본 보험료 외에 추가적인 할인 <strong>혜택</strong>(특약)을 얼마나 많이 적용할 수 있는지가 중요합니다. 각 보험사마다 <strong>할인율</strong>이 다르고 적용 기준이 상이하므로, 본인의 운전 습관에 맞는 특약을 선택하는 것이 중요합니다. 다음은 2026년 11월 기준으로 반드시 확인해야 할 주요 할인 특약들입니다.</p>
+
+    <h3>1. 주행거리(마일리지) 할인 특약: 장점 vs. 단점</h3>
+    <p>마일리지 특약은 주행거리가 짧을수록 보험료를 할인해주는 특약입니다. 운행량이 적은 운전자에게 가장 큰 <strong>장점</strong>이 되는 특약이며, 특히 출퇴근을 대중교통으로 하거나 주말에만 운전하는 경우 <strong>가입</strong> 필수 요소입니다. 보험사별로 2,000km, 4,000km, 10,000km 등 구간별 <strong>할인율</strong>이 다르게 적용되며, <strong>평균</strong>적으로 최대 30~40%까지 <strong>할인</strong>이 가능합니다. 차량에 설치된 계기판 사진이나 GPS 기록 등을 통해 증빙이 필요합니다.</p>
+    <ul>
+      <li><strong>장점:</strong> 운행 거리가 짧은 운전자는 높은 <strong>할인</strong> <strong>혜택</strong>을 받을 수 있습니다.</li>
+      <li><strong>단점:</strong> 주행 거리를 초과하면 <strong>할인</strong>을 받을 수 없으며, 운행 시작 시점과 종료 시점에 사진을 제출해야 하는 번거로움이 있습니다.</li>
+    </ul>
+
+    <h3>2. 안전운전 습관 할인 특약 (T-Map, Naver Map 등 연계)</h3>
+    <p>최근 <strong>다이렉트 자동차보험</strong> 시장에서 가장 주목받는 <strong>혜택</strong> 중 하나입니다. T-Map이나 네이버 지도 등 내비게이션 앱의 안전운전 점수를 활용하여 일정 점수(예: 60점 이상)를 달성하면 보험료를 <strong>할인</strong>해줍니다. 이는 운전자의 안전운전 습관을 독려하는 특약으로, 급가속, 급감속, 과속 등의 패턴을 분석하여 점수를 산정합니다. <strong>할인율</strong>은 <strong>평균</strong>적으로 5%에서 10% 내외입니다.</p>
+    <ul>
+      <li><strong>특징:</strong> 운전 습관 개선에 도움을 주고 <strong>할인</strong>까지 받을 수 있어 1석 2조의 <strong>장점</strong>이 있습니다.</li>
+      <li><strong>꿀팁:</strong> 이 <strong>혜택</strong>은 <strong>다이렉트</strong> <strong>가입</strong> 시에만 제공되는 경우가 많으므로 <strong>비교</strong> 시 꼭 확인해야 합니다.</li>
+    </ul>
+
+    <h3>3. 블랙박스 장착 할인 특약</h3>
+    <p>차량에 블랙박스가 장착되어 있는 경우 보험료 <strong>할인</strong> <strong>혜택</strong>을 받을 수 있습니다. 블랙박스는 사고 발생 시 과실 비율을 명확히 하는 데 도움을 주어 보험사의 손해율을 줄이는 효과가 있어 <strong>할인</strong>을 제공합니다. <strong>할인율</strong>은 <strong>평균</strong> 2~5% 정도이며, 블랙박스 사진을 제출해야 합니다. <strong>가입</strong> 시점에 블랙박스 장착 여부를 확인하는 것이 중요합니다.</p>
+
+    <h3>4. 자녀 할인 특약 (운전자 연령 한정 특약)</h3>
+    <p>운전 경력이 짧은 자녀를 위해 '운전자 연령 한정 특약'을 <strong>가입</strong>하는 경우가 많습니다. 만약 자녀가 운전하는 경우, 자녀의 연령을 기준으로 보험료를 산정합니다. 이 특약은 운전자 범위와 연령을 좁혀 보험료를 <strong>할인</strong>받는 방법입니다. 운전자의 나이가 젊을수록 보험료가 올라가는 경향이 있으므로, 이 <strong>단점</strong>을 보완할 수 있도록 보험사들은 자녀가 있는 가정을 위한 추가 <strong>할인</strong> <strong>이벤트</strong>를 진행하기도 합니다.</p>
+
+    <h3>5. 추가 할인 혜택: 대중교통 이용 할인, 첨단 안전장치 할인 등</h3>
+    <p>대중교통을 일정 금액 이상 이용한 경우 <strong>할인</strong>을 해주는 특약이나, 차량에 차선이탈 경보 장치(ADAS)나 자동 비상 제동 장치(AEB) 등 첨단 안전장치가 장착된 경우 <strong>할인</strong>을 제공하는 특약도 있습니다. 이러한 <strong>혜택</strong>은 보험사별로 제공 여부와 <strong>할인율</strong>이 다르므로 <strong>비교</strong> <strong>가입</strong>이 필수적입니다.</p>
+  </section>
+
+  <section id="comparison-table">
+    <span id="comparison-table-anchor" class="anchor"></span>
+    <h2>2026년 11월 주요 보험사별 자동차보험 혜택 비교표 (예상)</h2>
+    <p>2026년 11월 기준 국내 주요 보험사들의 <strong>자동차보험 혜택</strong>을 <strong>비교</strong>하여 정리했습니다. <strong>가입</strong> 시 <strong>할인율</strong>은 개인의 운전 경력, 차종, 사고 이력 등에 따라 상이할 수 있으므로, 아래 표는 참고용으로 활용하시고 반드시 개별 <strong>견적</strong>을 받아보시길 바랍니다.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>구분</th>
+          <th>삼성화재</th>
+          <th>KB손해보험</th>
+          <th>현대해상</th>
+          <th>DB손해보험</th>
+          <th>메리츠화재</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>마일리지 특약 (주행거리 할인)</td>
+          <td>최대 35%</td>
+          <td>최대 30%</td>
+          <td>최대 37%</td>
+          <td>최대 35%</td>
+          <td>최대 30%</td>
+        </tr>
+        <tr>
+          <td>안전운전 습관 할인 (T-Map 등)</td>
+          <td>12% (T-Map 70점 이상)</td>
+          <td>11% (T-Map 60점 이상)</td>
+          <td>10% (T-Map 70점 이상)</td>
+          <td>10% (T-Map 70점 이상)</td>
+          <td>10% (T-Map 60점 이상)</td>
+        </tr>
+        <tr>
+          <td>블랙박스 할인 특약</td>
+          <td>4%</td>
+          <td>3%</td>
+          <td>4%</td>
+          <td>3%</td>
+          <td>3%</td>
+        </tr>
+        <tr>
+          <td>자녀 할인 특약 (태아/만 6세 이하)</td>
+          <td>최대 10%</td>
+          <td>최대 10%</td>
+          <td>최대 8%</td>
+          <td>최대 10%</td>
+          <td>최대 10%</td>
+        </tr>
+        <tr>
+          <td>운전자 연령 한정 특약</td>
+          <td>21세/24세/26세/30세/35세 등</td>
+          <td>21세/24세/26세/30세/35세 등</td>
+          <td>21세/24세/26세/30세/35세 등</td>
+          <td>21세/24세/26세/30세/35세 등</td>
+          <td>21세/24세/26세/30세/35세 등</td>
+        </tr>
+        <tr>
+          <td>다이렉트 전용 추가 할인</td>
+          <td>상시 이벤트</td>
+          <td>상시 이벤트</td>
+          <td>상시 이벤트</td>
+          <td>상시 이벤트</td>
+          <td>상시 이벤트</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="highlight-box">
+      <strong>참고:</strong> 위 표는 2026년 11월 기준 예상 <strong>할인율</strong>이며, 보험사 정책에 따라 수시로 변동될 수 있습니다. <strong>가입</strong> 시 정확한 <strong>할인</strong> <strong>혜택</strong>은 각 보험사 <strong>다이렉트</strong> 채널에서 확인하거나 <strong>견적</strong>을 받아보시길 바랍니다.
+    </div>
+
+    <h3>주요 보험사별 <strong>장단점</strong> 및 <strong>차이점</strong></h3>
+    <p>각 보험사마다 강점으로 내세우는 <strong>장점</strong>이 명확히 존재합니다. 예를 들어, A보험사는 <strong>마일리지 특약 할인율</strong>이 높고 B보험사는 <strong>안전운전 습관 할인</strong> 점수 기준이 낮아 <strong>가입</strong>하기 쉽습니다. 이러한 <strong>차이점</strong>을 파악하는 것이 <strong>저렴한곳</strong>을 찾는 핵심입니다. <strong>내돈내산</strong> <strong>후기</strong>들을 살펴보면, 운전 습관에 따라 자신에게 맞는 보험사가 다를 수 있다는 점을 알 수 있습니다.</p>
+    <ul>
+      <li><strong>삼성화재:</strong> 탄탄한 고객 서비스와 폭넓은 <strong>할인</strong> <strong>혜택</strong>으로 <strong>순위</strong>가 높습니다. 상대적으로 안정적인 보상 시스템이 <strong>장점</strong>입니다.</li>
+      <li><strong>KB손해보험:</strong> <strong>다이렉트</strong> 채널의 편의성이 높으며, <strong>할인</strong> <strong>이벤트</strong>를 자주 진행하여 <strong>저렴한곳</strong>으로 인식됩니다.</li>
+      <li><strong>현대해상:</strong> <strong>마일리지 특약 할인율</strong>이 높고, <strong>자녀 할인 혜택</strong>이 우수하여 가족 단위 <strong>가입자</strong>에게 <strong>추천</strong>됩니다.</li>
+      <li><strong>DB손해보험:</strong> 다양한 특약과 부가 서비스가 <strong>장점</strong>이며, <strong>가입</strong> 절차가 간편합니다.</li>
+      <li><strong>메리츠화재:</strong> 비교적 <strong>가격</strong> 경쟁력이 높으며, <strong>할인</strong> 특약의 폭이 넓어 <strong>싼곳</strong>을 찾는 운전자들에게 인기입니다.</li>
+    </ul>
+  </section>
+
+  <section id="cost-factors">
+    <span id="cost-factors-anchor" class="anchor"></span>
+    <h2>자동차보험료 견적을 결정하는 5가지 핵심 요인</h2>
+    <p>자동차보험 <strong>비용</strong>은 단순히 차량 가격이나 <strong>할인</strong> <strong>혜택</strong>만으로 결정되지 않습니다. 운전자 개인의 특성과 차량 정보 등 복합적인 요인들이 작용합니다. 다음은 <strong>2026년</strong> 11월 기준으로 <strong>예상</strong> <strong>비용</strong>을 결정하는 가장 중요한 요소들입니다. <strong>가입</strong> 시 이러한 요인들을 고려하여 <strong>견적</strong>을 산출해 보세요.</p>
+
+    <h3>1. 운전자 경력 및 사고 이력 (할인할증 등급)</h3>
+    <p>운전 경력이 길고 사고 이력이 적을수록 <strong>할인</strong>율이 높아져 보험료가 낮아집니다. 사고 이력은 보험료를 결정하는 가장 중요한 <strong>요소</strong> 중 하나로, 사고 시 다음 갱신 시점에 <strong>할인할증 등급</strong>이 상승하여 보험료가 크게 오를 수 있습니다. 특히 <strong>다이렉트</strong> <strong>가입</strong>의 경우 <strong>내돈내산</strong> <strong>후기</strong>들을 살펴보면 사고 이력에 따른 보험료 변동폭이 크다는 것을 알 수 있습니다.</p>
+
+    <h3>2. 차량 모델 및 안전 등급</h3>
+    <p>차량 모델과 안전 등급도 중요한 요소입니다. 고급 차량이나 외제 차량일수록 수리 <strong>비용</strong>이 높기 때문에 보험료가 비싸집니다. 또한, 보험개발원에서 산정한 차량별 안전 등급이 높을수록 보험료가 낮아집니다. <strong>비교</strong> 시 본인 차량의 등급을 미리 확인해 보는 것이 좋습니다.</p>
+
+    <h3>3. 운전자 범위 및 연령 한정 특약</h3>
+    <p>운전자 범위를 '본인 한정'으로 좁히거나, 운전 가능한 연령을 '만 30세 이상' 등으로 한정하면 보험료를 크게 절약할 수 있습니다. 운전자 범위가 넓어질수록 사고 위험성이 높아지므로 보험료 <strong>비용</strong>이 증가합니다. <strong>가입</strong> 시 운전자 범위를 최소화하는 것이 <strong>저렴한곳</strong>을 찾는 가장 쉬운 방법입니다.</p>
+
+    <h3>4. 보장 범위 (대인배상, 대물배상, 자차 보험)</h3>
+    <p>보험의 보장 범위(대인/대물/자차)를 넓히면 보험료가 올라갑니다. 특히 대물배상 한도를 2억 원, 5억 원 등으로 높이면 <strong>비용</strong>이 증가합니다. <strong>추천</strong>되는 보장 범위는 개인의 재정 상황과 운전 습관에 따라 다르지만, <strong>평균</strong>적으로 대물배상은 2억 원 이상으로 설정하는 것이 안전합니다. <strong>내돈내산</strong> <strong>후기</strong>를 보면 자차 보험의 자기부담금을 높여 <strong>가격</strong>을 낮추는 방법도 많이 사용됩니다.</p>
+
+    <h3>5. 다이렉트 vs. 설계사 (보험 가입 채널의 차이점)</h3>
+    <p><strong>다이렉트 자동차보험</strong>은 설계사를 통하지 않고 온라인으로 직접 <strong>가입</strong>하는 방식입니다. 설계사 수수료가 제외되어 <strong>가격</strong>이 <strong>평균</strong>적으로 15~20% <strong>저렴한곳</strong>으로 알려져 있습니다. 반면, 설계사를 통한 <strong>가입</strong>은 복잡한 특약에 대한 전문적인 상담을 받을 수 있다는 <strong>장점</strong>이 있습니다. <strong>비교</strong> <strong>가입</strong> 시 <strong>차이점</strong>을 파악하여 본인에게 맞는 채널을 선택해야 합니다.</p>
+  </section>
+
+  <section id="tips">
+    <span id="tips-anchor" class="anchor"></span>
+    <h2>2026년 11월 자동차보험 가입 시 체크리스트 및 꿀팁</h2>
+    <p>보험 <strong>가입</strong> 시 <strong>비용</strong>을 최대한 절약하기 위해 반드시 확인해야 할 사항들을 정리했습니다. 다음 <strong>체크리스트</strong>를 활용하여 <strong>저렴한곳</strong>을 찾아 <strong>가입</strong>하세요.</p>
+
+    <div class="highlight-box">
+      <strong>STEP 1: 만기일 확인 및 갱신 시기 파악</strong><br />
+      보험 만기일 한 달 전부터 <strong>견적</strong>을 받아보는 것이 좋습니다. <strong>11월</strong>에 갱신하는 경우, 10월 말부터 여러 보험사의 <strong>할인</strong> <strong>혜택</strong> <strong>이벤트</strong>를 확인해야 합니다.
+    </div>
+
+    <div class="highlight-box">
+      <strong>STEP 2: 할인 특약 꼼꼼히 검토</strong><br />
+      마일리지, 블랙박스, 안전운전 습관 등 본인에게 적용 가능한 <strong>할인</strong> 특약을 모두 파악하여 <strong>가입</strong> 전에 <strong>비교</strong>해야 합니다. 특히 <strong>다이렉트</strong> <strong>가입</strong> 시 추가 <strong>할인</strong> <strong>혜택</strong>이 있는지 확인하세요.
+    </div>
+
+    <div class="highlight-box">
+      <strong>STEP 3: 운전자 범위 및 연령 설정</strong><br />
+      운전자를 가족 전체로 설정할지, 부부 한정으로 할지, 본인 한정으로 할지 신중하게 결정해야 합니다. 운전자 범위가 넓어질수록 <strong>비용</strong>이 증가합니다.
+    </div>
+
+    <div class="highlight-box">
+      <strong>STEP 4: 자동차보험 다이렉트 비교 사이트 활용</strong><br />
+      여러 보험사의 <strong>가격</strong> <strong>견적</strong>을 한 번에 <strong>비교</strong>할 수 있는 사이트를 이용하면 <strong>저렴한곳</strong>을 쉽게 찾을 수 있습니다. <strong>평균</strong>적으로 15% <strong>할인</strong>된 <strong>가격</strong>으로 <strong>가입</strong>할 수 있습니다.
+    </div>
+
+    <div class="highlight-box">
+      <strong>STEP 5: 가입 후기 및 순위 확인</strong><br />
+      <strong>내돈내산</strong> <strong>후기</strong>를 통해 실제 보상 서비스 만족도나 <strong>장단점</strong>을 파악하는 것도 중요합니다. 단순히 <strong>가격</strong>이 <strong>싼곳</strong>을 찾는 것보다 서비스의 질도 고려해야 합니다.
+    </div>
+
+    <h3>신뢰할 수 있는 외부 정보 참고</h3>
+    <p>자동차보험 관련 정보는 금융감독원, 보험개발원 등 공신력 있는 기관의 자료를 참고하는 것이 좋습니다. <strong>가입</strong> 시 약관을 꼼꼼히 읽어보고, 이해가 가지 않는 부분은 금융감독원(FSS) 홈페이지를 참고하거나 상담원에게 문의하여 <strong>차이점</strong>을 정확히 파악해야 합니다.</p>
+    <ul>
+      <li><a href="https://www.fss.or.kr/" target="_blank">금융감독원 (FSS)</a>: 금융 소비자 보호 및 분쟁 조정 정보 제공</li>
+      <li><a href="https://www.kidi.or.kr/" target="_blank">보험개발원</a>: 보험 통계 및 보험 상품 비교 정보 제공</li>
+      <li><a href="https://namu.wiki/w/%EC%9E%90%EB%8F%99%EC%B0%A8%EB%B3%B4%ED%97%98" target="_blank">나무위키 자동차보험 문서</a>: 일반적인 용어 및 개념 설명</li>
+      <li><a href="https://www.gov.kr/portal/main" target="_blank">정부24</a>: 자동차 관련 행정 정보 및 정책 확인</li>
+    </ul>
+
+  </section>
+
+  <section id="faq">
+    <span id="faq-anchor" class="anchor"></span>
+    <h2>자주 묻는 질문 (FAQ)</h2>
+    <dl>
+      <dt>Q1: 11월에 갱신하는 것이 <strong>가격</strong>적으로 <strong>장점</strong>이 있나요?</dt>
+      <dd>A: <strong>11월</strong>은 보험사의 갱신 <strong>이벤트</strong>가 집중되는 시기이므로, 다른 시기보다 더 많은 <strong>할인</strong> <strong>혜택</strong>을 받을 수 있는 <strong>장점</strong>이 있습니다. <strong>비교</strong> 시점의 <strong>가격</strong> 경쟁률이 높아집니다.</dd>
+
+      <dt>Q2: <strong>다이렉트</strong> <strong>가입</strong>이 무조건 <strong>저렴한곳</strong>인가요?</dt>
+      <dd>A: <strong>평균</strong>적으로 다이렉트 <strong>가입</strong>이 설계사 <strong>가입</strong>보다 15% <strong>이상</strong> <strong>저렴한곳</strong>인 것은 맞습니다. 하지만, 본인에게 맞는 <strong>할인</strong> 특약을 꼼꼼하게 챙기지 못하면 오히려 <strong>장점</strong>을 놓칠 수 있으니 <strong>비교</strong> <strong>견적</strong>을 꼭 확인해야 합니다.</dd>
+
+      <dt>Q3: 마일리지 특약 <strong>가입</strong> 시 주의할 <strong>단점</strong>은 무엇인가요?</dt>
+      <dd>A: 주행거리가 <strong>예상</strong>보다 길어지면 <strong>할인</strong> <strong>혜택</strong>을 받지 못합니다. 또한, 운행 종료 시점에 반드시 증빙 자료를 제출해야 하는 번거로움이 있습니다.</dd>
+
+      <dt>Q4: <strong>내돈내산</strong> <strong>후기</strong>를 보면 어떤 보험사가 <strong>순위</strong>가 높나요?</dt>
+      <dd>A: <strong>순위</strong>는 개인의 주관적인 경험에 따라 다를 수 있습니다. <strong>내돈내산</strong> <strong>후기</strong>를 참고할 때 <strong>가격</strong>뿐만 아니라 보상 처리 속도나 상담 서비스 만족도 등 <strong>장단점</strong>을 종합적으로 고려하는 것이 중요합니다.</dd>
+
+      <dt>Q5: <strong>견적</strong> <strong>비교</strong> 시 <strong>차이점</strong>이 큰 이유는 무엇인가요?</dt>
+      <dd>A: 보험사마다 운전 경력에 대한 <strong>할인율</strong> 적용 기준, 차량 모델별 위험 등급 평가, 그리고 각 <strong>할인</strong> 특약의 <strong>가격</strong> 반영 비율이 다르기 때문입니다. 따라서 <strong>견적</strong> <strong>비교</strong>는 필수적입니다.</dd>
+    </dl>
+  </section>
+
+  <section id="quote-form">
+    <span id="quote-form-anchor" class="anchor"></span>
+    <h2>2026년 11월 실시간 보험료 견적 문의 (최저가 <strong>비교</strong> <strong>추천</strong>)</h2>
+    <p>본인에게 맞는 최적의 <strong>자동차보험 혜택</strong>을 찾고 계십니까? 아래 폼에 정보를 입력하시면 <strong>2026년 11월</strong> 기준 다양한 보험사의 <strong>할인</strong> <strong>혜택</strong>을 반영한 <strong>예상</strong> <strong>비용</strong> <strong>견적</strong>을 받아보실 수 있습니다. <strong>저렴한곳</strong>을 찾는 가장 빠르고 정확한 방법입니다.</p>
+    <form action="/submit" method="POST">
+      <h3>1. 차량 정보 및 운전자 세부 사항 입력</h3>
+      <label for="car-model">차량 모델</label>
+      <input type="text" id="car-model" name="car_model" placeholder="예: 현대 아반떼 2020년형" required />
+
+      <label for="driving-year">운전 경력 (년)</label>
+      <input type="number" id="driving-year" name="driving_year" placeholder="예: 5" required />
+
+      <label for="driving-distance">연간 주행 거리 (km)</label>
+      <input type="text" id="driving-distance" name="driving_distance" placeholder="예: 10000km" required />
+
+      <label for="driver-age">운전자 연령</label>
+      <input type="number" id="driver-age" name="driver_age" placeholder="예: 35" required />
+
+      <h3>2. 원하는 보장 범위 및 특약 선택</h3>
+      <label for="coverage-type">가입 유형</label>
+      <select id="coverage-type" name="coverage_type" required>
+        <option value="">선택하세요</option>
+        <option value="basic">기본 보장 (최저가 <strong>추천</strong>)</option>
+        <option value="full">종합 보험 (자차 포함)</option>
+        <option value="premium">고급 보장 (특약 다수 포함)</option>
+      </select>
+
+      <label for="mileage-option">마일리지 특약 적용 여부</label>
+      <select id="mileage-option" name="mileage_option" required>
+        <option value="yes">예 (<strong>할인</strong> <strong>혜택</strong> 적용)</option>
+        <option value="no">아니오</option>
+      </select>
+
+      <label for="additional-note">추가 요청 사항</label>
+      <textarea id="additional-note" name="additional_note" rows="3" placeholder="예: 자녀 할인 혜택, 안전운전 습관 할인 적용 여부"></textarea>
+
+      <h3>3. 개인 정보 및 견적 수령 방법</h3>
+      <label for="name">이름</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="phone">연락처</label>
+      <input type="tel" id="phone" name="phone" placeholder="010-1234-5678" required />
+
+      <label for="email">이메일</label>
+      <input type="email" id="email" name="email" placeholder="help@domain.com" />
+
+      <button type="submit" class="btn-cta">견적 문의 보내기</button>
+    </form>
+  </section>
+
+
+  
